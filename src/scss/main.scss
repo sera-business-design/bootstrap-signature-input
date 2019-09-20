@@ -1,0 +1,36 @@
+$transition-fade: opacity .15s linear !default;
+
+/**
+ * Signature
+ */
+[data-toggle="signature"] {
+  @extend .border, .rounded, .position-relative, .mw-100;
+
+  canvas {
+    @extend .w-100;
+    @extend .h-100;
+    display: block;
+    cursor: crosshair;
+  }
+
+  input[disabled] ~ canvas {
+    cursor: default;
+  }
+
+  input {
+    display: none;
+  }
+
+  .__pad__eraser {
+    @extend .p-2, .position-absolute;
+    color: #F783AC;
+    opacity: 0.75;
+    top: 0;
+    right: 0;
+    transition: $transition-fade;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

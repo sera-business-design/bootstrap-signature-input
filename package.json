@@ -1,0 +1,25 @@
+{
+  "name": "@serabusinessdesign/bootstrap-signature-input",
+  "version": "0.0.1",
+  "description": "Use a signature field as form input, using default Bootstrap 4 styling.",
+  "main": "src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sera-business-design/bootstrap-signature-input.git"
+  },
+  "keywords": [],
+  "author": "Robbert Feunekes <robbert@serasoft.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sera-business-design/bootstrap-signature-input/issues"
+  },
+  "homepage": "https://github.com/sera-business-design/bootstrap-signature-input#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "signature_pad": "^3.0.0-beta.3"
+  }
+}
