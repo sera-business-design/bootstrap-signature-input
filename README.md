@@ -1,7 +1,8 @@
 # bootstrap-signature-input
+
 A jQuery plugin for using a signature field as form input, using default Bootstrap 4 styling. The signature and canvas magic is powered by szimek's excellent [Signature Pad](https://github.com/szimek/signature_pad).
 
-##Installation
+## Installation
 To install, use the following command:
 ```shell script
 npm install @serabusinessdesign/bootstrap-signature-input
@@ -21,7 +22,8 @@ or
 @import "~@serabusinessdesign/bootstrap-signature-input/src/scss/main";
 ```
 
-##Usage
+## Usage
+
 Using the signature input plugin is fairly straightforward. First, add an element to your HTML:
 ```html
 <div data-toggle="signature" style="height: 150px">
@@ -43,5 +45,6 @@ $('[data-toggle=signature]').signature({
 })
 ```
 
-##How it works
+## How it works
+
 Internally, the plugin creates a new instance of signature_pad and the input field is hidden. Then, when you submit the form you put DOM element in, the point data is read from the canvas (using `signaturePad.toData()`) and inserted into the input element as a JSON encoded string. 
