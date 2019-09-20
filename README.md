@@ -11,7 +11,7 @@ Next, include the JavaScript in your source file by adding a line at the top:
 require('@serabusinessdesign/bootstrap-signature-input')
 ```
 
-Finally, add de Sass file to your source (depending on your setup):
+Finally, add the Sass file to your source (depending on your setup):
 ```javascript
 require('@serabusinessdesign/bootstrap-signature-input/src/scss/main.scss')
 ```
