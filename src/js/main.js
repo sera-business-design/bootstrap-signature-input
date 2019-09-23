@@ -19,13 +19,23 @@ import SignaturePad from 'signature_pad'
       const $canvas = $('<canvas/>')
       $(this).append($canvas)
 
-      let $input = $(this).find('input')
-      if ($input.length === 0) {
-        $input = $('<input type="hidden">')
+      let $origInput = $(this).find('input')
+      let $input = $('<input type="hidden">')
+
+      // Always map to hidden input
+      if ($origInput.length === 0) {
+        $input
           .attr('name', $(this).data('name'))
           .val($(this).data('url'))
-        $(this).append($input)
+      } else {
+        $input
+          .attr({name: $origInput[0].name})
+          .val($origInput.val())
+
+        $origInput.remove()
       }
+
+      $(this).append($input)
 
       window.addEventListener("resize", () => resize($canvas));
       resize($canvas)
