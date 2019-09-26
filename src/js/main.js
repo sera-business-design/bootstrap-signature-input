@@ -1,24 +1,12 @@
 import SignaturePad from 'signature_pad'
 
 (function ($) {
-  function resize ($canvas) {
-    const ratio = Math.max(window.devicePixelRatio || 1, 1)
-
-    const canvasEl = $canvas.get(0)
-    canvasEl.width = canvasEl.offsetWidth * ratio
-    canvasEl.height = canvasEl.offsetHeight * ratio
-    canvasEl.getContext('2d').scale(ratio, ratio)
-  }
-
   $.fn.signature = function (opts) {
     const settings = $.extend({
       throttle: 8
     }, opts)
 
     return this.each(function () {
-      const $canvas = $('<canvas/>')
-      $(this).append($canvas)
-
       // Always map to hidden input
       let $origInput = $(this).find('input')
       let $input = $('<input type="hidden">')
@@ -39,12 +27,15 @@ import SignaturePad from 'signature_pad'
 
       $(this).append($input)
 
-      // Resize canvas to fix point mapping to CSS resizing
-      window.addEventListener("resize", () => resize($canvas));
-      resize($canvas)
+      const $canvas = $('<canvas/>')
+      $(this).append($canvas)
 
       // Construct the signature pad
       const pad = new SignaturePad($canvas.get(0), settings)
+
+      // Resize canvas to fix point mapping to CSS resizing
+      window.addEventListener("resize", resize);
+      resize()
 
       // Try to set data
       if ($input.val()) {
@@ -78,6 +69,20 @@ import SignaturePad from 'signature_pad'
         }
         $(this).unbind('submit').submit()
       })
+
+      function resize () {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1)
+
+        const data = pad.toData()
+
+        const canvasEl = $canvas.get(0)
+        canvasEl.width = canvasEl.offsetWidth * ratio
+        canvasEl.height = canvasEl.offsetHeight * ratio
+        canvasEl.getContext('2d').scale(ratio, ratio)
+
+        pad.clear()
+        pad.fromData(data)
+      }
     })
   }
 }(jQuery))

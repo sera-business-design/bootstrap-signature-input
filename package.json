@@ -1,10 +1,12 @@
 {
   "name": "@serabusinessdesign/bootstrap-signature-input",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Use a signature field as form input, using default Bootstrap 4 styling.",
   "main": "src/js/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,22 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "signature_pad": "^3.0.0-beta.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "expose-loader": "^0.7.5",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }

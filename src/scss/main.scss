@@ -1,20 +1,36 @@
+// Inspection fixes
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+
+$input-disabled-bg: $gray-200 !default;
+
+$spacer: 1rem !default;
+
+$border-width: 1px !default;
+$border-color: $gray-300 !default;
+$border-radius: .25rem !default;
+
 $transition-fade: opacity .15s linear !default;
 
 /**
  * Signature
  */
 [data-toggle="signature"] {
-  @extend .border, .rounded, .position-relative, .mw-100;
+  border: $border-width solid $border-color !important;
+  border-radius: $border-radius !important;
+  position: relative !important;
+  max-width: 100% !important;
 
   canvas {
-    @extend .w-100;
-    @extend .h-100;
+    width: 100% !important;
+    height: 100% !important;
     display: block;
     cursor: crosshair;
   }
 
   input[disabled] ~ canvas {
     cursor: default;
+    background-color: $input-disabled-bg;
   }
 
   input {
@@ -22,7 +38,8 @@ $transition-fade: opacity .15s linear !default;
   }
 
   .__pad__eraser {
-    @extend .p-2, .position-absolute;
+    padding: $spacer * 0.5;
+    position: absolute;
     color: #F783AC;
     opacity: 0.75;
     top: 0;
