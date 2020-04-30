@@ -33,6 +33,12 @@ import SignaturePad from 'signature_pad'
       // Construct the signature pad
       const pad = new SignaturePad($canvas.get(0), settings)
 
+      pad.onEnd = function () {
+        if (!$input.attr('disabled')) {
+          $input.val(JSON.stringify(pad.toData()))
+        }
+      }
+
       // Resize canvas to fix point mapping to CSS resizing
       window.addEventListener("resize", resize);
       resize()
@@ -60,15 +66,6 @@ import SignaturePad from 'signature_pad'
       } else {
         pad.off()
       }
-
-      // Catch form submit event, put new data in input field, then resubmit
-      $(this).closest('form').submit(function (e) {
-        e.preventDefault()
-        if (!$input.attr('disabled')) {
-          $input.val(JSON.stringify(pad.toData()))
-        }
-        $(this).unbind('submit').submit()
-      })
 
       function resize () {
         const ratio = Math.max(window.devicePixelRatio || 1, 1)
