@@ -46,6 +46,7 @@ $transition-fade: opacity .15s linear !default;
     right: 0;
     transition: $transition-fade;
     cursor: pointer;
+    font-size: 1.5em;
     &:hover {
       opacity: 1;
     }
